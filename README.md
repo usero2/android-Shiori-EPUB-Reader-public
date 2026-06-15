@@ -33,6 +33,9 @@ Features built-in Text-to-Speech with customizable text replacement before speec
 | ⚙️ Settings | Customize fonts, line spacing, and TTS speed |
 
 ---
+![](https://github.com/usero2/android-Shiori-EPUB-Reader-public/blob/main/images/Screenshot_20260615_194213_com_shiori_epubreader_MainActivity.jpg)
+![](https://github.com/usero2/android-Shiori-EPUB-Reader-public/blob/main/images/Screenshot_20260615_194226_com_shiori_epubreader_MainActivity.jpg)
+![](https://github.com/usero2/android-Shiori-EPUB-Reader-public/blob/main/images/Screenshot_20260615_194234_com_shiori_epubreader_MainActivity.jpg)
 
 ## 📲 Installation
 
