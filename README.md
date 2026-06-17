@@ -28,23 +28,17 @@ Features built-in Text-to-Speech with customizable text replacement before speec
 | 🔊 Text-to-Speech | Start reading from any paragraph with a long press |
 | ✏️ Text Replacement | Replace words before TTS playback, supports 5,000+ entries |
 | 👁️ Visual Replacement | Display replaced text directly in the reader |
-| 🎯 Select Mode | Tap words in a book to instantly create replacement rules |
+| 🎯 Select Mode | Tap words in the book → context menu: Copy / Translate / Add Replacement |
 | 🎨 Themes | Light / Dark / Sepia |
 | ⚙️ Settings | Customize fonts, line spacing, and TTS speed |
 
 ---
-## App Snapshot 
-[Reading View](https://github.com/usero2/android-Shiori-EPUB-Reader-public/blob/main/images/Screenshot_20260615_194213_com_shiori_epubreader_MainActivity.jpg)
-
-[Reading View TTS](https://github.com/usero2/android-Shiori-EPUB-Reader-public/blob/main/images/Screenshot_20260615_194226_com_shiori_epubreader_MainActivity.jpg)
-
-[Reading View Font config](https://github.com/usero2/android-Shiori-EPUB-Reader-public/blob/main/images/Screenshot_20260615_194234_com_shiori_epubreader_MainActivity.jpg)
 
 ## 📲 Installation
 
 ### Install from APK
 
-1. Download `shiori-release.apk` from the Releases page.
+1. Download `shiori-release.apk` from the [Releases](../../releases) page.
 2. Enable **Settings → Security → Install unknown apps** for your browser or file manager.
 3. Open the APK and tap **Install**.
 
@@ -107,6 +101,7 @@ Tap the **Grid** icon in the top bar to switch between:
 
 - Scrolling to the end of a chapter automatically loads the next chapter.
 - Scrolling to the top automatically loads the previous chapter.
+- Works even for very short chapters that fit entirely within the viewport.
 
 ### Chapter Navigation
 
@@ -119,9 +114,8 @@ Tap the **Grid** icon in the top bar to switch between:
 |--------|--------|
 | ← | Return to Library |
 | Aa | Reader appearance settings |
-| ☀️ / 🌙 | Quick theme switch |
 | ✋ | Toggle Selection Mode |
-| ⚙️ | Open Settings |
+| 🔊 | Open TTS panel |
 
 ---
 
@@ -129,9 +123,9 @@ Tap the **Grid** icon in the top bar to switch between:
 
 ### Start Reading Aloud
 
-1. Long-press any paragraph.
-2. Select **▶ Start TTS from here**.
-3. Reading begins from the selected paragraph.
+1. Enable **Selection Mode** (✋ icon in the top bar).
+2. **Tap** any paragraph — a context menu will appear.
+3. Tap **▶ Start TTS from here** to begin reading from that paragraph.
 
 ### TTS Control Bar
 
@@ -139,13 +133,14 @@ Tap the **Grid** icon in the top bar to switch between:
 |----------|--------|
 | ⏮ | Previous paragraph |
 | ⏸ / ▶ | Pause / Resume |
-| ⏹ | Stop TTS |
 | ⏭ | Next paragraph |
+| ⏹ | Stop TTS |
+| 📍 | Scroll to the currently reading paragraph |
 
 ### Reading Highlight
 
 - The currently spoken paragraph is automatically highlighted.
-- The reader scrolls automatically as playback progresses.
+- The screen does **not** auto-scroll — tap 📍 to jump to the current paragraph whenever you need.
 
 ### TTS Voice Settings
 
@@ -167,8 +162,10 @@ Text Replacement modifies words or phrases before TTS playback and can also affe
 ### Add a New Rule
 
 1. Tap **+**
-2. Enter the text to find.
-3. Enter the replacement text.
+2. Enter the text to find in **Find (from)**.
+3. Enter the replacement text in **Replace with (to)**.
+   - Leading and trailing spaces are preserved — useful for adding spacing around words.
+   - If edge spaces are present, a `·` indicator appears below the field to make them visible.
 4. Tap **Save**.
 
 ### Example
@@ -182,7 +179,7 @@ Text Replacement modifies words or phrases before TTS playback and can also affe
 ### Edit or Delete Rules
 
 - Tap ✏️ to edit.
-- Tap 🗑️ to delete.
+- Tap 🗑️ to delete (confirmation required).
 
 ### Enable / Disable Rules
 
@@ -192,7 +189,7 @@ Text Replacement modifies words or phrases before TTS playback and can also affe
 ### Search Rules
 
 - Tap 🔍 in the top bar.
-- Search both source and replacement text in real time.
+- Searches both source and replacement text in real time.
 
 ### Export Rules
 
@@ -208,3 +205,295 @@ Example:
 AI	A.I.
 Dr.	Doctor
 Mr.	Mister
+```
+
+### Import Rules
+
+1. Tap **⬇ Import**
+2. Select a previously exported `.txt` file.
+3. Choose **Replace all** to overwrite the current list, or **Add to list** to merge.
+
+---
+
+## 👁️ Feature 5 — Visual Text Replacement
+
+Replacement rules are not limited to TTS — they also affect what is **displayed in the reader**.
+
+- Every word matching a rule is visually replaced in the WebView.
+- Updates immediately when a new rule is added.
+- Applies to all `<p>`, `<h1>` – `<h6>` elements.
+
+---
+
+## 🎯 Feature 6 — Selection Mode
+
+Add replacement rules by tapping words directly in the book — no typing required.
+
+### How to Use
+
+1. Tap the **✋ (TouchApp)** icon in the top bar to enter Selection Mode (icon turns highlighted).
+2. **Tap** any word in the book — it will be highlighted and a context menu will appear.
+3. Choose an action from the context menu.
+
+### Context Menu Options
+
+| Option | Function |
+|--------|----------|
+| **▶ Start TTS from here** | Begin TTS playback from the tapped paragraph |
+| **📋 Copy** | Copy the selected text to clipboard |
+| **🌐 Translate** | Translate the selection using Google Translate in a popup — without leaving the reader |
+| **🔊 Add to TTS Replacement** | Add as a TTS-Only replacement rule |
+| **+ Add to Replacement** | Add as a Visual + TTS replacement rule |
+
+### Extend the Selection
+
+- After tapping a word, drag the **selection handles** to select multiple words.
+- The context menu updates its preview text in real time.
+- Scrolling dismisses the context menu but keeps the text highlighted.
+
+### Exit Selection Mode
+
+- Tap **✋** again to return to normal mode.
+
+---
+
+## 🔇 Feature 7 — TTS-Only Text Replacement
+
+Replace words only when sent to the TTS engine — the reader displays the original text unchanged.
+
+### Access
+
+**Settings → TTS Tools → TTS-Only Replacements**
+
+### Comparison
+
+| Type | Shown in Reader | Read by TTS |
+|------|----------------|-------------|
+| **Visual + TTS** | ✅ Replaced text | ✅ Replaced text |
+| **TTS-Only** | ❌ Original text | ✅ Replaced text |
+
+### Example Use Cases
+
+- A character name that TTS mispronounces — replace the pronunciation for TTS while keeping the original name visible.
+- Abbreviations that you want TTS to expand into full words while the reader still shows the abbreviation.
+
+### Add from Selection Mode
+
+In the context menu, tap **🔊 Add "word" to TTS Replacement** — the dialog opens with the selected text pre-filled.
+
+---
+
+## 🎨 Feature 8 — Reader Themes & Display Settings
+
+### Change Theme
+
+Go to **Settings → Theme**:
+
+| Theme | Appearance | Best For |
+|-------|--------|------------|
+| **Light** | White background, dark text | Daytime reading |
+| **Dark** | Dark background, light text | Night / battery saving |
+| **Sepia** | Warm cream background | Extended reading sessions |
+
+### Display Settings
+
+**Settings → Reading:**
+
+| Option | Range | Notes |
+|---------|-----|---------|
+| **Font Size** | 12–28sp | Adjusts text size |
+| **Line Height** | 1.0×–2.5× | Adjusts line spacing |
+
+### Advanced Options
+
+| Option | Effect |
+|---------|-----|
+| **Force System Font** | Overrides EPUB fonts with system Thai font (Noto Thai) |
+| **Disable EPUB CSS** | Removes all EPUB stylesheets and uses the app's own styling |
+| **Remove Font Color** | Strips color declarations from EPUB styles |
+
+---
+
+## ⚙️ Feature 9 — Settings
+
+Accessible via the **⚙️** icon in the Library top bar.
+
+### Reading
+- **Font Size**: 12–28sp (slider)
+- **Line Height**: 1.0×–2.5× (slider)
+
+### Theme
+- Light / Dark / Sepia
+
+### Text-to-Speech
+- **Pitch (Tone)**: ×0.5–×2.0
+- **Speed**: ×0.5–×3.0
+
+### TTS Tools
+- **Visual + TTS Replacements** → Replaces words in both the reader view and before TTS playback
+- **TTS-Only Replacements** → Replaces words only when sent to TTS — the reader displays the original text unchanged
+
+### About
+- App version information
+- Support & Donate links
+
+---
+
+## 🗂️ Project Structure
+
+```
+app/src/main/java/com/shiori/epubreader/
+├── data/
+│   ├── AppDatabase.kt
+│   ├── Book.kt
+│   ├── BookDao.kt
+│   ├── BookRepository.kt
+│   ├── TextReplacement.kt
+│   ├── TextReplacementDao.kt
+│   ├── TextReplacementRepository.kt
+│   └── UserPreferencesRepository.kt
+├── epub/
+│   ├── EpubParser.kt
+│   ├── EpubBook.kt
+│   └── HtmlTextExtractor.kt
+├── tts/
+│   └── TtsManager.kt
+├── ui/
+│   ├── library/
+│   ├── reader/
+│   ├── replacements/
+│   ├── settings/
+│   └── navigation/
+└── ShioriApplication.kt
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Usage |
+|-----------|-------|
+| **Kotlin** | Primary language |
+| **Jetpack Compose** | UI framework |
+| **Room** | Local database (books, replacements) |
+| **Hilt** | Dependency injection |
+| **DataStore** | User preferences |
+| **WebView + JS** | EPUB rendering |
+| **Android TTS** | Text-to-Speech engine |
+| **Coil** | Cover image loading |
+| **Google AdMob** | Banner advertising |
+
+---
+
+## 🔨 Build from Source
+
+### Prerequisites
+- Android Studio Hedgehog (2023.1.1) or newer
+- JDK 17
+- Android SDK API 35
+
+### Steps
+```bash
+git clone https://github.com/YOUR_USERNAME/shiori-epub-reader.git
+cd shiori-epub-reader
+./gradlew assembleDebug
+```
+
+APK output: `app/build/outputs/apk/debug/app-debug.apk`
+
+### Release Build
+```bash
+./gradlew assembleRelease
+```
+
+> Requires `shiori-release.jks` keystore and signing config in `app/build.gradle.kts`
+
+---
+
+## 📋 Permissions
+
+| Permission | Required for |
+|-----------|-------------|
+| `READ_EXTERNAL_STORAGE` | Open EPUB files (Android 12 and below) |
+| `INTERNET` | Load AdMob advertisements |
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] Bookmarks and highlights
+- [ ] In-book text search
+- [ ] Reading statistics
+- [ ] Custom fonts (import TTF)
+- [ ] Night mode auto-schedule
+- [ ] Cloud backup via Google Drive
+
+---
+
+## 🐛 Known Issues
+
+- EPUB files with DRM (Digital Rights Management) cannot be opened.
+- EPUBs with very large embedded images may load slowly.
+
+---
+
+## 📄 License
+
+```
+MIT License
+
+Copyright (c) 2026 Shiori EPUB Reader
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software.
+```
+
+---
+
+## 📋 Release Notes
+
+### v1.1.0
+- **Selection Mode**: Replaced the single-action popup with a full context menu — Copy / Translate / Start TTS from here / Add to TTS Replacement / Add to Replacement.
+- **Translate**: Translations now open in a Google Translate bottom sheet popup inside the app — no browser required.
+- **TTS-Only Replacements**: New replacement type that only affects TTS playback — the reader displays the original text unchanged.
+- **Start TTS from here**: Moved into the Selection Mode context menu (previously required a separate long-press gesture).
+- **Context menu design**: Redesigned with a dark card style that is readable across all themes.
+- **Bug fix**: White flash when opening an EPUB file — background color is now applied before content loads.
+- **Bug fix**: White screen after navigating Settings → back — fixed AdBanner lifecycle handling in Compose navigation.
+- **App transitions**: Changed to instant switching — eliminates white flash between all screens.
+
+### v1.0.1
+- **TTS**: Removed auto-scroll when changing paragraphs — the screen no longer jumps while listening.
+- **TTS**: Added 📍 "Navigate to current paragraph" button — tap to jump to the active paragraph on demand.
+- **Text Replacement**: "Replace with" field now preserves leading and trailing spaces (no longer trimmed).
+- **Text Replacement**: Added `·` visual indicator for edge spaces in both the dialog hint and the list.
+- **Settings**: Added "❤️ Support the Project" section on the About page.
+- **Bug fix**: Infinite scroll now works correctly for short chapters whose content fits entirely within the viewport.
+
+### v1.0.0 — Initial Release
+- Library: Add/remove books, 3 view modes, reading progress tracking.
+- EPUB Reader: Infinite scroll between chapters, resume from last position.
+- Text-to-Speech: Start from any paragraph, highlight active paragraph during playback.
+- Text Replacement: Add/edit/delete rules, export/import TSV, search.
+- Visual Replacement: Replacement rules reflected in the reader view.
+- Selection Mode: Tap words in the book to create replacement rules directly.
+- Themes: Light / Dark / Sepia.
+- AdMob banner.
+
+---
+
+## ❤️ Support & Donate
+
+If this app has improved your reading experience, saved you time, or you just want to support its continued development, please consider donating!
+
+Your support is incredibly appreciated, helps fix bugs, and keeps this project alive and growing. 🙏
+
+https://buymeacoffee.com/endofday
+
+<a href="https://www.buymeacoffee.com/endofday" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
+---
+**Built with ❤️ for readers everywhere**
