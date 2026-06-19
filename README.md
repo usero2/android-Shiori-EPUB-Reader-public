@@ -520,46 +520,83 @@ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software.
 ```
 
----
-
 ## 📋 Release Notes
 
-### v1.4.3
+---
 
-**Multi-language TTS**
-- TTS language selection now uses **checkboxes** instead of radio buttons — enable Thai, English, and/or Chinese (Simplified) simultaneously.
-- When multiple languages are enabled, each paragraph is automatically split into segments by Unicode script range and spoken with the appropriate language voice:
-  - Thai characters (U+0E00 – U+0E7F) → Thai TTS engine
-  - Latin characters (A–Z / a–z) → English TTS engine
-  - CJK characters (U+4E00 – U+9FFF, U+3400 – U+4DBF) → Chinese TTS engine
-  - Neutral characters (spaces, digits, punctuation) inherit the current segment's language — no choppy micro-pauses.
-- A book with mixed Thai–English content (e.g. Thai prose with English proper nouns) will now pronounce each part correctly without any manual setup.
-- At least one language must remain checked.
-
-**Bug fix — chapter pre-buffering after paragraph skip**
-- Pressing **‹** or **›** while TTS was playing could corrupt the previous/next chapter pre-buffer.
-- Root cause: Android TTS fires an `onDone` callback even for utterances cancelled by `tts.stop()`. The stale callback was advancing the chapter counter or firing `onAllParagraphsDone` prematurely, which cleared the chapter buffer at the wrong time.
-- Fixed by embedding a **speaker sequence number** in every utterance ID. `onDone` and `onError` now discard any callback whose embedded sequence number does not match the current value — stale callbacks from skipped utterances are silently ignored.
+### v1.0.0 — Initial Release
+- Library: Add/remove books, 3 view modes, reading progress tracking.
+- EPUB Reader: Infinite scroll between chapters, resume from last position.
+- Text-to-Speech: Start from any paragraph, highlight active paragraph during playback.
+- Text Replacement: Add/edit/delete rules, export/import TSV, search.
+- Visual Replacement: Replacement rules reflected in the reader view.
+- Selection Mode: Tap words in the book to create replacement rules directly.
+- Themes: Light / Dark / Sepia.
+- AdMob banner.
 
 ---
 
-### v1.4.2
-
-**Library — Search / Filter**
-- Added a **Search** text field in the bookshelf toolbar, immediately after the "Shiori" title.
-- Type any text to instantly filter the book list by title or filename (case-insensitive).
-- A small **✕** clear button appears inline when there is text to erase.
-- Applies to all three view modes: Thumbnail, List, and Detail.
+### v1.0.1
+- **TTS**: Removed auto-scroll when changing paragraphs — the screen no longer jumps while listening.
+- **TTS**: Added 📍 "Navigate to current paragraph" button — tap to jump to the active paragraph on demand.
+- **Text Replacement**: "Replace with" field now preserves leading and trailing spaces (no longer trimmed).
+- **Text Replacement**: Added `·` visual indicator for edge spaces in both the dialog hint and the list.
+- **Settings**: Added "❤️ Support the Project" section on the About page.
+- **Bug fix**: Infinite scroll now works correctly for short chapters whose content fits entirely within the viewport.
 
 ---
 
-### v1.4.1
+### v1.1.0
+- **Selection Mode**: Replaced the single-action popup with a full context menu — Copy / Translate / Start TTS from here / Add to TTS Replacement / Add to Replacement.
+- **Translate**: Translations now open in a Google Translate bottom sheet popup inside the app — no browser required.
+- **TTS-Only Replacements**: New replacement type that only affects TTS playback — the reader displays the original text unchanged.
+- **Start TTS from here**: Moved into the Selection Mode context menu (previously required a separate long-press gesture).
+- **Context menu design**: Redesigned with a dark card style that is readable across all themes.
+- **Bug fix**: White flash when opening an EPUB file — background color is now applied before content loads.
+- **Bug fix**: White screen after navigating Settings → back — fixed AdBanner lifecycle handling in Compose navigation.
+- **App transitions**: Changed to instant switching — eliminates white flash between all screens.
 
-**Floating TTS Controls — Compact Layout**
-- Merged the two button rows into a single row: **Navigate → Add Replacement → ⏮ → ⏸/▶ → ⏭**.
+---
 
-**Floating TTS Controls — Stop Button Redesign**
-- The ✕ stop button is now a small plain text character, transparent background, positioned flush to the top-right corner of the overlay with no padding or margin.
+### v1.1.1
+- **TTS Language**: Added language selector in Settings — choose Thai, English, or Chinese (Simplified) for TTS playback.
+- **Renamed screens**: Text Replacement screens renamed for clarity — "Visual + TTS Replacements" → "Visual Replacement", "TTS-Only Replacements" → "TTS Replacement".
+- **Export filenames**: Visual Replacement exports default to `shiori_visual.txt`; TTS Replacement exports default to `shiori_tts.txt`.
+- **Settings**: "TTS Tools" section renamed to "Text Replacement"; app version now displays correctly.
+- **Word selection**: Context menu is now always active — no mode toggle required.
+- **Bug fix**: Black screen when tapping back button multiple times rapidly in Settings or Text Replacement screens.
+
+---
+
+### v1.2.0
+- **Floating TTS Controls**: A floating overlay (prev / pause / next) now appears when TTS is playing and the app goes to the background. TTS continues reading via a foreground service — no more stopping when switching apps or turning off the screen.
+  - 🧭 Navigate button: tap to return to Shiori and scroll to the paragraph currently being read.
+  - ✏️ Add Replacement button: opens the **Add Text Replacement** popup directly — no need to go back into the app.
+  - Drag anywhere on screen; snap to 15% visible when dragged >50% off the edge.
+  - Double-tap controls to animate back to screen center.
+  - Enable / disable and resize in **Settings → Text-to-Speech → Floating Controls**.
+- **Add Text Replacement popup**: The ✏️ button in Floating Controls and the **+ Add to Replacement** context menu item now open a unified popup with **Visual** and **TTS** checkboxes — add to one or both replacement lists in a single step.
+- **Context menu**: Merged the two separate "Add to TTS Replacement" and "Add to Replacement" items into one **+ Add to Replacement** entry that opens the unified popup.
+- **Permissions**: Added `SYSTEM_ALERT_WINDOW` (floating overlay), `FOREGROUND_SERVICE`, `POST_NOTIFICATIONS` (playback notification).
+
+---
+
+### v1.2.1
+- **Bug fix**: Floating controls overlay now automatically hides when returning to the Reader screen — previously the overlay remained visible after tapping the 🧭 Navigate button or opening a book from the Library while TTS was playing.
+
+---
+
+### v1.2.2
+- **Bug fix**: Floating controls Navigate (🧭) button now scrolls to the current TTS paragraph every time — previously it only worked on the first tap; after scrolling on the reading page it would stop working.
+- **Bug fix**: Floating controls overlay now hides instantly when the Navigate button is tapped — previously a race condition could leave the overlay visible on top of the Reader screen.
+- **Bug fix**: Floating controls overlay now hides correctly when returning to the Reader from the Library while TTS is playing.
+
+---
+
+### v1.3.0
+- **Feature**: Replacement list now shows the order number for each entry.
+- **Feature**: Order number is editable in the Add/Edit dialog — type any number to set exact position.
+- **Feature**: Regex support — check "Use Regex" in the Add/Edit dialog to use standard regex patterns as the find rule (e.g. find `(ด){3,}` → replace `ดด`). Regex entries are marked with **Rx** in the list. Works for both TTS and visual (on-screen) replacements.
 
 ---
 
@@ -592,65 +629,57 @@ copies of the Software.
 
 ---
 
-### v1.3.0
-- **Feature**: Replacement list now shows the order number for each entry.
-- **Feature**: Order number is editable in the Add/Edit dialog — type any number to set exact position.
-- **Feature**: Regex support — check "Use Regex" in the Add/Edit dialog to use standard regex patterns as the find rule (e.g. find `(ด){3,}` → replace `ดด`). Regex entries are marked with **Rx** in the list. Works for both TTS and visual (on-screen) replacements.
+### v1.4.1
 
-### v1.2.2
-- **Bug fix**: Floating controls Navigate (🧭) button now scrolls to the current TTS paragraph every time — previously it only worked on the first tap; after scrolling on the reading page it would stop working.
-- **Bug fix**: Floating controls overlay now hides instantly when the Navigate button is tapped — previously a race condition could leave the overlay visible on top of the Reader screen.
-- **Bug fix**: Floating controls overlay now hides correctly when returning to the Reader from the Library while TTS is playing.
+**Floating TTS Controls — Compact Layout**
+- Merged the two button rows into a single row: **Navigate → Add Replacement → ⏮ → ⏸/▶ → ⏭**.
 
-### v1.2.1
-- **Bug fix**: Floating controls overlay now automatically hides when returning to the Reader screen — previously the overlay remained visible after tapping the 🧭 Navigate button or opening a book from the Library while TTS was playing.
+**Floating TTS Controls — Stop Button Redesign**
+- The ✕ stop button is now a small plain text character, transparent background, positioned flush to the top-right corner of the overlay with no padding or margin.
 
-### v1.2.0
-- **Floating TTS Controls**: A floating overlay (prev / pause / next) now appears when TTS is playing and the app goes to the background. TTS continues reading via a foreground service — no more stopping when switching apps or turning off the screen.
-  - 🧭 Navigate button: tap to return to Shiori and scroll to the paragraph currently being read.
-  - ✏️ Add Replacement button: opens the **Add Text Replacement** popup directly — no need to go back into the app.
-  - Drag anywhere on screen; snap to 15% visible when dragged >50% off the edge.
-  - Double-tap controls to animate back to screen center.
-  - Enable / disable and resize in **Settings → Text-to-Speech → Floating Controls**.
-- **Add Text Replacement popup**: The ✏️ button in Floating Controls and the **+ Add to Replacement** context menu item now open a unified popup with **Visual** and **TTS** checkboxes — add to one or both replacement lists in a single step.
-- **Context menu**: Merged the two separate "Add to TTS Replacement" and "Add to Replacement" items into one **+ Add to Replacement** entry that opens the unified popup.
-- **Permissions**: Added `SYSTEM_ALERT_WINDOW` (floating overlay), `FOREGROUND_SERVICE`, `POST_NOTIFICATIONS` (playback notification).
+---
 
-### v1.1.1
-- **TTS Language**: Added language selector in Settings — choose Thai, English, or Chinese (Simplified) for TTS playback.
-- **Renamed screens**: Text Replacement screens renamed for clarity — "Visual + TTS Replacements" → "Visual Replacement", "TTS-Only Replacements" → "TTS Replacement".
-- **Export filenames**: Visual Replacement exports default to `shiori_visual.txt`; TTS Replacement exports default to `shiori_tts.txt`.
-- **Settings**: "TTS Tools" section renamed to "Text Replacement"; app version now displays correctly.
-- **Word selection**: Context menu is now always active — no mode toggle required.
-- **Bug fix**: Black screen when tapping back button multiple times rapidly in Settings or Text Replacement screens.
+### v1.4.2
 
-### v1.1.0
-- **Selection Mode**: Replaced the single-action popup with a full context menu — Copy / Translate / Start TTS from here / Add to TTS Replacement / Add to Replacement.
-- **Translate**: Translations now open in a Google Translate bottom sheet popup inside the app — no browser required.
-- **TTS-Only Replacements**: New replacement type that only affects TTS playback — the reader displays the original text unchanged.
-- **Start TTS from here**: Moved into the Selection Mode context menu (previously required a separate long-press gesture).
-- **Context menu design**: Redesigned with a dark card style that is readable across all themes.
-- **Bug fix**: White flash when opening an EPUB file — background color is now applied before content loads.
-- **Bug fix**: White screen after navigating Settings → back — fixed AdBanner lifecycle handling in Compose navigation.
-- **App transitions**: Changed to instant switching — eliminates white flash between all screens.
+**Library — Search / Filter**
+- Added a **Search** text field in the bookshelf toolbar, immediately after the "Shiori" title.
+- Type any text to instantly filter the book list by title or filename (case-insensitive).
+- A small **✕** clear button appears inline when there is text to erase.
+- Applies to all three view modes: Thumbnail, List, and Detail.
 
-### v1.0.1
-- **TTS**: Removed auto-scroll when changing paragraphs — the screen no longer jumps while listening.
-- **TTS**: Added 📍 "Navigate to current paragraph" button — tap to jump to the active paragraph on demand.
-- **Text Replacement**: "Replace with" field now preserves leading and trailing spaces (no longer trimmed).
-- **Text Replacement**: Added `·` visual indicator for edge spaces in both the dialog hint and the list.
-- **Settings**: Added "❤️ Support the Project" section on the About page.
-- **Bug fix**: Infinite scroll now works correctly for short chapters whose content fits entirely within the viewport.
+---
 
-### v1.0.0 — Initial Release
-- Library: Add/remove books, 3 view modes, reading progress tracking.
-- EPUB Reader: Infinite scroll between chapters, resume from last position.
-- Text-to-Speech: Start from any paragraph, highlight active paragraph during playback.
-- Text Replacement: Add/edit/delete rules, export/import TSV, search.
-- Visual Replacement: Replacement rules reflected in the reader view.
-- Selection Mode: Tap words in the book to create replacement rules directly.
-- Themes: Light / Dark / Sepia.
-- AdMob banner.
+### v1.4.3
+
+**Multi-language TTS**
+- TTS language selection now uses **checkboxes** instead of radio buttons — enable Thai, English, and/or Chinese (Simplified) simultaneously.
+- When multiple languages are enabled, each paragraph is automatically split into segments by Unicode script range and spoken with the appropriate language voice:
+  - Thai characters (U+0E00 – U+0E7F) → Thai TTS engine
+  - Latin characters (A–Z / a–z) → English TTS engine
+  - CJK characters (U+4E00 – U+9FFF, U+3400 – U+4DBF) → Chinese TTS engine
+  - Neutral characters (spaces, digits, punctuation) inherit the current segment's language — no choppy micro-pauses.
+- A book with mixed Thai–English content (e.g. Thai prose with English proper nouns) will now pronounce each part correctly without any manual setup.
+- At least one language must remain checked.
+
+**Bug fix — chapter pre-buffering after paragraph skip**
+- Pressing **‹** or **›** while TTS was playing could corrupt the previous/next chapter pre-buffer.
+- Root cause: Android TTS fires an `onDone` callback even for utterances cancelled by `tts.stop()`. The stale callback was advancing the chapter counter or firing `onAllParagraphsDone` prematurely, which cleared the chapter buffer at the wrong time.
+- Fixed by embedding a **speaker sequence number** in every utterance ID. `onDone` and `onError` now discard any callback whose embedded sequence number does not match the current value — stale callbacks from skipped utterances are silently ignored.
+
+---
+
+### v1.4.4
+
+**TTS Preview buttons in replacement dialogs**
+- Added a **▶ Play** button to the right of the **Find (from)** field and the **Replace with (to)** field in all three replacement dialogs:
+  - **Edit Replacement** — the Add/Edit dialog in the Text Replacement screen.
+  - **Add Replacement from reader** — the popup that opens when you tap **+ Add to Replacement** from the word-selection context menu.
+  - **Add Replacement from floating overlay** — the **✏️ Add Replacement** popup opened from the floating TTS controls.
+- Tapping **▶** reads the current field text aloud using TTS. Script is auto-detected per the same rules as main TTS (Thai / Chinese / Latin).
+- While the field is being read, the button changes to a **■ Stop** icon so you can see which field is playing.
+- Tapping **■** while playing stops playback immediately and reverts to **▶**.
+- When TTS finishes reading, the button reverts to **▶** automatically.
+- Each dialog creates its own lightweight TTS instance that is independent of the main book TTS — preview does not interrupt or affect book playback state.
 
 ---
 
