@@ -25,12 +25,14 @@ Features built-in Text-to-Speech with customizable text replacement before speec
 |----------|-------------|
 | 📚 Library | Manage books in 3 different views with reading progress tracking |
 | 📖 EPUB Reader | Smooth reading experience with infinite chapter scrolling |
-| 🔊 Text-to-Speech | Start reading from any paragraph with a long press |
+| 🔊 Text-to-Speech | Start reading from any paragraph; continues in background |
+| 📱 Floating Controls | Floating prev/pause/next overlay while using other apps; snap to edge |
 | ✏️ Text Replacement | Replace words before TTS playback, supports 5,000+ entries |
 | 👁️ Visual Replacement | Display replaced text directly in the reader |
-| 🎯 Select Mode | Tap words in the book → context menu: Copy / Translate / Add Replacement |
+| 🎯 Select & Translate | Tap any word → context menu: Copy / Translate / Start TTS / Add Replacement |
+| 🌐 TTS Language | Choose TTS reading language: Thai / English / Chinese (Simplified) |
 | 🎨 Themes | Light / Dark / Sepia |
-| ⚙️ Settings | Customize fonts, line spacing, and TTS speed |
+| ⚙️ Settings | Customize fonts, line spacing, TTS speed, and language |
 
 ---
 
@@ -114,7 +116,6 @@ Tap the **Grid** icon in the top bar to switch between:
 |--------|--------|
 | ← | Return to Library |
 | Aa | Reader appearance settings |
-| ✋ | Toggle Selection Mode |
 | 🔊 | Open TTS panel |
 
 ---
@@ -123,9 +124,8 @@ Tap the **Grid** icon in the top bar to switch between:
 
 ### Start Reading Aloud
 
-1. Enable **Selection Mode** (✋ icon in the top bar).
-2. **Tap** any paragraph — a context menu will appear.
-3. Tap **▶ Start TTS from here** to begin reading from that paragraph.
+1. **Tap** any paragraph in the book — a context menu will appear.
+2. Tap **▶ Start TTS from here** to begin reading from that paragraph.
 
 ### TTS Control Bar
 
@@ -149,6 +149,47 @@ Navigate to **Settings → Text-to-Speech**:
 - **Pitch (Tone):** 0.5× – 2.0×
 - **Speed:** 0.5× – 3.0×
 
+### TTS Language
+
+Navigate to **Settings → TTS Language**:
+
+- **Thai** (ภาษาไทย) — default
+- **English**
+- **Chinese (Simplified)** (中文 简体)
+
+---
+
+## 📱 Floating TTS Controls
+
+When TTS is playing and you switch to another app (or turn off the screen), Shiori starts a foreground service to keep reading and shows a floating overlay with playback controls.
+
+### Buttons
+
+| Button | Function |
+|--------|----------|
+| 🧭 Navigate | Open Shiori and scroll to the paragraph currently being read |
+| ✏️ Add Replacement | Open the **Add Text Replacement** popup without leaving the current app |
+| ⏮ | Previous paragraph |
+| ⏸ / ▶ | Pause / Resume |
+| ⏭ | Next paragraph |
+
+### Dragging & Snapping
+
+- **Drag** the control panel anywhere on screen — it can be moved partially off-screen.
+- **Snap to edge**: If you drag it more than 50% off the edge, it snaps to 15% visible so it stays accessible without covering content.
+- **Double-tap** anywhere on the controls to animate it back to the center of the screen.
+
+### Enable / Resize
+
+Go to **Settings → Text-to-Speech**:
+
+| Setting | Description |
+|---------|-------------|
+| **Floating Controls** | Toggle the overlay on or off |
+| **Float Controls Size** | Scale the controls from ×0.5 to ×2.0 |
+
+> On first use, Android will ask for **Display over other apps** permission — tap **Allow** to enable the overlay.
+
 ---
 
 ## ✏️ Feature 4 — Text Replacement
@@ -157,7 +198,7 @@ Text Replacement modifies words or phrases before TTS playback and can also affe
 
 ### Access
 
-**Settings → TTS Tools → Text Replacements**
+**Settings → Text Replacement → Visual Replacement**
 
 ### Add a New Rule
 
@@ -225,15 +266,14 @@ Replacement rules are not limited to TTS — they also affect what is **displaye
 
 ---
 
-## 🎯 Feature 6 — Selection Mode
+## 🎯 Feature 6 — Word Selection & Context Menu
 
-Add replacement rules by tapping words directly in the book — no typing required.
+Tap any word in the reader to get an instant context menu — no mode switching required.
 
 ### How to Use
 
-1. Tap the **✋ (TouchApp)** icon in the top bar to enter Selection Mode (icon turns highlighted).
-2. **Tap** any word in the book — it will be highlighted and a context menu will appear.
-3. Choose an action from the context menu.
+1. **Tap** any word in the book — it will be highlighted and a context menu appears immediately.
+2. Choose an action from the context menu.
 
 ### Context Menu Options
 
@@ -242,8 +282,7 @@ Add replacement rules by tapping words directly in the book — no typing requir
 | **▶ Start TTS from here** | Begin TTS playback from the tapped paragraph |
 | **📋 Copy** | Copy the selected text to clipboard |
 | **🌐 Translate** | Translate the selection using Google Translate in a popup — without leaving the reader |
-| **🔊 Add to TTS Replacement** | Add as a TTS-Only replacement rule |
-| **+ Add to Replacement** | Add as a Visual + TTS replacement rule |
+| **+ Add to Replacement** | Opens a popup with **Visual** and **TTS** checkboxes — add to one or both types in a single action |
 
 ### Extend the Selection
 
@@ -251,35 +290,31 @@ Add replacement rules by tapping words directly in the book — no typing requir
 - The context menu updates its preview text in real time.
 - Scrolling dismisses the context menu but keeps the text highlighted.
 
-### Exit Selection Mode
-
-- Tap **✋** again to return to normal mode.
-
 ---
 
-## 🔇 Feature 7 — TTS-Only Text Replacement
+## 🔇 Feature 7 — TTS Replacement
 
 Replace words only when sent to the TTS engine — the reader displays the original text unchanged.
 
 ### Access
 
-**Settings → TTS Tools → TTS-Only Replacements**
+**Settings → Text Replacement → TTS Replacement**
 
 ### Comparison
 
 | Type | Shown in Reader | Read by TTS |
 |------|----------------|-------------|
-| **Visual + TTS** | ✅ Replaced text | ✅ Replaced text |
-| **TTS-Only** | ❌ Original text | ✅ Replaced text |
+| **Visual Replacement** | ✅ Replaced text | ✅ Replaced text |
+| **TTS Replacement** | ❌ Original text | ✅ Replaced text |
 
 ### Example Use Cases
 
 - A character name that TTS mispronounces — replace the pronunciation for TTS while keeping the original name visible.
 - Abbreviations that you want TTS to expand into full words while the reader still shows the abbreviation.
 
-### Add from Selection Mode
+### Add from Context Menu
 
-In the context menu, tap **🔊 Add "word" to TTS Replacement** — the dialog opens with the selected text pre-filled.
+Tap any word → context menu → **+ Add to Replacement** → check **TTS** (and optionally **Visual**) → tap **Save**.
 
 ---
 
@@ -328,10 +363,17 @@ Accessible via the **⚙️** icon in the Library top bar.
 ### Text-to-Speech
 - **Pitch (Tone)**: ×0.5–×2.0
 - **Speed**: ×0.5–×3.0
+- **Floating Controls**: Toggle the floating overlay on/off
+- **Float Controls Size**: Scale ×0.5–×2.0
 
-### TTS Tools
-- **Visual + TTS Replacements** → Replaces words in both the reader view and before TTS playback
-- **TTS-Only Replacements** → Replaces words only when sent to TTS — the reader displays the original text unchanged
+### TTS Language
+- **Thai** (ภาษาไทย) — default
+- **English**
+- **Chinese (Simplified)** (中文 简体)
+
+### Text Replacement
+- **Visual Replacement** → Replaces words in both the reader view and before TTS playback
+- **TTS Replacement** → Replaces words only when sent to TTS — the reader displays the original text unchanged
 
 ### About
 - App version information
@@ -416,6 +458,9 @@ APK output: `app/build/outputs/apk/debug/app-debug.apk`
 |-----------|-------------|
 | `READ_EXTERNAL_STORAGE` | Open EPUB files (Android 12 and below) |
 | `INTERNET` | Load AdMob advertisements |
+| `SYSTEM_ALERT_WINDOW` | Show floating TTS controls over other apps |
+| `FOREGROUND_SERVICE` | Keep TTS playback alive in the background |
+| `POST_NOTIFICATIONS` | Show TTS playback notification |
 
 ---
 
@@ -454,6 +499,25 @@ copies of the Software.
 ---
 
 ## 📋 Release Notes
+
+### v1.2.0
+- **Floating TTS Controls**: A floating overlay (prev / pause / next) now appears when TTS is playing and the app goes to the background. TTS continues reading via a foreground service — no more stopping when switching apps or turning off the screen.
+  - 🧭 Navigate button: tap to return to Shiori and scroll to the paragraph currently being read.
+  - ✏️ Add Replacement button: opens the **Add Text Replacement** popup directly — no need to go back into the app.
+  - Drag anywhere on screen; snap to 15% visible when dragged >50% off the edge.
+  - Double-tap controls to animate back to screen center.
+  - Enable / disable and resize in **Settings → Text-to-Speech → Floating Controls**.
+- **Add Text Replacement popup**: The ✏️ button in Floating Controls and the **+ Add to Replacement** context menu item now open a unified popup with **Visual** and **TTS** checkboxes — add to one or both replacement lists in a single step.
+- **Context menu**: Merged the two separate "Add to TTS Replacement" and "Add to Replacement" items into one **+ Add to Replacement** entry that opens the unified popup.
+- **Permissions**: Added `SYSTEM_ALERT_WINDOW` (floating overlay), `FOREGROUND_SERVICE`, `POST_NOTIFICATIONS` (playback notification).
+
+### v1.1.1
+- **TTS Language**: Added language selector in Settings — choose Thai, English, or Chinese (Simplified) for TTS playback.
+- **Renamed screens**: Text Replacement screens renamed for clarity — "Visual + TTS Replacements" → "Visual Replacement", "TTS-Only Replacements" → "TTS Replacement".
+- **Export filenames**: Visual Replacement exports default to `shiori_visual.txt`; TTS Replacement exports default to `shiori_tts.txt`.
+- **Settings**: "TTS Tools" section renamed to "Text Replacement"; app version now displays correctly.
+- **Word selection**: Context menu is now always active — no mode toggle required.
+- **Bug fix**: Black screen when tapping back button multiple times rapidly in Settings or Text Replacement screens.
 
 ### v1.1.0
 - **Selection Mode**: Replaced the single-action popup with a full context menu — Copy / Translate / Start TTS from here / Add to TTS Replacement / Add to Replacement.
