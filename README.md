@@ -40,7 +40,7 @@ Features built-in Text-to-Speech with customizable text replacement before speec
 
 ### Install from APK
 
-1. Download the latest APK from the [releases/](releases/) folder — e.g. [`shiori-release-1.6.0.apk`](releases/1.6.0/shiori-release-1.6.0.apk).
+1. Download the latest APK: [`shiori-release-1.6.0.apk`](../../raw/main/releases/1.6.0/shiori-release-1.6.0.apk) — or browse all versions in [`releases/`](tree/main/releases).
 2. Enable **Settings → Security → Install unknown apps** for your browser or file manager.
 3. Open the APK and tap **Install**.
 
