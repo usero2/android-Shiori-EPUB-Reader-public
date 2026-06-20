@@ -40,7 +40,7 @@ Features built-in Text-to-Speech with customizable text replacement before speec
 
 ### Install from APK
 
-1. Download `shiori-release.apk` from the [Releases](../../releases) page.
+1. Download the latest APK from the [releases/](releases/) folder — e.g. [`shiori-release-1.6.0.apk`](releases/1.6.0/shiori-release-1.6.0.apk).
 2. Enable **Settings → Security → Install unknown apps** for your browser or file manager.
 3. Open the APK and tap **Install**.
 
@@ -693,6 +693,17 @@ copies of the Software.
   - English: "Hello, this is a sample of English speech."
   - Chinese: "你好，这是中文语音示例。"
 - **TTS Engine selector** — If the device has more than one TTS engine installed (e.g., old and new Google TTS), a **TTS Engine** dropdown appears in the Text-to-Speech settings section. Switching engines reloads the voice lists for all languages and uses that engine for both preview and book playback.
+
+---
+
+### v1.6.0
+
+**Reader TTS Panel — Per-language Controls & Improved Layout**
+
+- **Per-language controls in Reader** — The TTS panel in the reader view now shows individual **Pitch** and **Speed** sliders for every enabled language (Thai / English / Chinese), matching the per-language settings in the Settings screen.
+- **Per-language on/off toggle** — A **checkbox** beside each language name lets you enable or disable that language directly from the reader TTS panel without going to Settings.
+- **Playback controls moved to bottom** — The control row (⏮ / ▶ / ⏸ / ⏭ / ⏹ / ⊙) is now anchored at the **bottom** of the TTS panel, keeping language sliders at the top.
+- **Tap outside to close panel** — Tapping anywhere on the book content while the **TTS panel** or **Font Settings panel** is open now dismisses the panel immediately.
 
 ---
 
