@@ -1,3 +1,33 @@
+# 🧪 เปิดรับผู้ทดสอบ · Help Test Shiori EPUB Reader
+
+**👉 เข้าร่วมการทดสอบ / Join the test:**
+
+https://play.google.com/apps/test/RQSb8ZOtFHU/ahAO29uNQbtPJSotMCmjqsOjMll0mflxo9cDiQQiQmDQVvxYXQY1nq5R9nyMhRzBSNaGZExyVyHm2fWpwKZcjrO_W9
+
+### 🇹🇭 ภาษาไทย
+
+สวัสดีครับ ผมกำลังพัฒนาแอปอ่าน eBook สำหรับ Android ชื่อ **Shiori EPUB Reader** และกำลังเปิดรับผู้ทดสอบ
+
+คุณสามารถช่วยได้โดย:
+- ✅ เข้าร่วมการทดสอบ
+- ✅ ติดตั้งและทดลองใช้งานแอป
+- ✅ ส่งข้อเสนอแนะหรือแจ้งปัญหาที่พบ
+
+ทุกความคิดเห็นและคำแนะนำจะช่วยให้แอปดีขึ้น ขอบคุณสำหรับการสนับสนุนครับ 🙏
+
+### 🇬🇧 English
+
+Hello! I'm currently developing an Android eBook reader called **Shiori EPUB Reader** and I'm looking for testers.
+
+You can help by:
+- ✅ Joining the testing program
+- ✅ Installing and trying the app
+- ✅ Sharing feedback, suggestions, or bug reports
+
+Your feedback will help improve the app and make it better for everyone. Thank you for your support! 🙏
+
+---
+
 # 📖 Shiori — EPUB Reader for Android
 
 <p align="center">
