@@ -2,13 +2,14 @@
 
 แอปอยู่ในช่วง **Closed Testing** บน Google Play — รับผู้ทดสอบจำนวนจำกัด
 
-**👉 สนใจร่วมทดสอบ?** ส่งอีเมล **Google account (Gmail)** ของคุณมาที่
-### 📧 [endofday8888@gmail.com](mailto:endofday8888@gmail.com?subject=Join%20Shiori%20Closed%20Test)
-แล้วผมจะเพิ่มอีเมลคุณเข้าระบบทดสอบ
+**📲 ลองติดตั้งจาก Play Store · Try installing from Google Play:**
+<https://play.google.com/store/apps/details?id=com.shiori.epubreader>
 
-**หลังถูกเพิ่มเข้าระบบแล้ว · Once you're added:**
-- 🧪 กดเข้าร่วมทดสอบ (opt in): <https://play.google.com/apps/testing/com.shiori.epubreader>
-- 📲 ติดตั้งจาก Play Store: <https://play.google.com/store/apps/details?id=com.shiori.epubreader>
+> **🇹🇭 ถ้าดาวน์โหลดแอปจากลิงก์ด้านบนไม่ได้** (ขึ้นว่าไม่พบแอป หรือติดตั้งไม่ได้) แปลว่าคุณยังไม่ได้อยู่ในรายชื่อผู้ทดสอบ — **ส่งอีเมล Gmail ของคุณมาที่ [endofday8888@gmail.com](mailto:endofday8888@gmail.com?subject=Join%20Shiori%20Closed%20Test) เพื่อร่วมทดสอบแอป** แล้วผมจะเพิ่มคุณเข้าระบบ จากนั้นจะติดตั้งได้
+>
+> **🇬🇧 If you can't download the app from the link above** (it shows "item not found" or won't install), you're not on the testers list yet — **email your Google account (Gmail) to [endofday8888@gmail.com](mailto:endofday8888@gmail.com?subject=Join%20Shiori%20Closed%20Test) to join the test.** I'll add you, and then you'll be able to install it.
+
+**หลังถูกเพิ่มเข้าระบบแล้ว กดเข้าร่วมทดสอบ · Once you're added, opt in:** <https://play.google.com/apps/testing/com.shiori.epubreader>
 
 ---
 
