@@ -15,7 +15,7 @@
 <body>
 
 <h1>Privacy Policy — Shiori EPUB Reader</h1>
-<p><strong>Last updated: June 20, 2026</strong></p>
+<p><strong>Last updated: June 29, 2026</strong></p>
 
 <p>Shiori EPUB Reader ("the App") is developed by <strong>Endofday</strong>. This Privacy Policy explains what information is collected when you use the App and how it is used.</p>
 
@@ -25,10 +25,10 @@
 
 <h3>Information We Do NOT Collect</h3>
 <ul>
-  <li>The App does <strong>not</strong> require you to create an account.</li>
-  <li>The App does <strong>not</strong> upload your books, reading history, or personal data to any server.</li>
-  <li>The App does <strong>not</strong> collect your name, email address, or any personally identifiable information.</li>
-  <li>EPUB files you open are read locally on your device and are never transmitted.</li>
+  <li>The App does <strong>not</strong> require you to create an account to read books.</li>
+  <li>The developer does <strong>not</strong> operate any server and does <strong>not</strong> receive, store, or have access to your books, reading data, or personal information.</li>
+  <li>The App does <strong>not</strong> collect your name or any personally identifiable information for the developer's own use.</li>
+  <li>By default, EPUB files you open are read locally on your device and are never transmitted. They leave your device only if you choose to enable the optional Cloud Sync feature described below, in which case they are sent only to <em>your own</em> private Google Drive folder.</li>
 </ul>
 
 <h3>Information Collected by Third-Party Services</h3>
@@ -43,7 +43,41 @@
 
 <hr />
 
-<h2>2. Permissions Used</h2>
+<h2>2. Google Drive Cloud Sync (Optional)</h2>
+
+<p>The App includes an <strong>optional</strong> Cloud Sync feature that lets you back up your data to, and restore it from, <strong>your own</strong> Google Drive. This feature is <strong>off by default</strong> and is only used if you choose to sign in with Google from the Settings screen. If you never sign in, no data is ever sent to Google Drive and none of the following applies.</p>
+
+<h3>Google account access we request</h3>
+<ul>
+  <li><strong>Your email address</strong> (<code>email</code> scope) — shown in the app only so you can see which account is signed in. It is not stored or sent anywhere else.</li>
+  <li><strong>The app's private Drive folder</strong> (<code>https://www.googleapis.com/auth/drive.appdata</code> scope) — this is a hidden, application-specific folder ("appDataFolder") in your Google Drive. This scope grants access <strong>only</strong> to data the App itself creates in that hidden folder. The App <strong>cannot</strong> see, read, or modify any of your other Google Drive files, photos, or documents.</li>
+</ul>
+
+<h3>What is stored in your Drive (only when you enable Cloud Sync)</h3>
+<ul>
+  <li>App settings (font size, line height, theme, text-to-speech voice/speed/language, and your text-replacement rules)</li>
+  <li>Reading data: per-book reading position, bookmarks, highlights, and notes</li>
+  <li>For books you explicitly choose to sync: the EPUB file and its cover image</li>
+</ul>
+
+<h3>How this data is handled</h3>
+<ul>
+  <li>All of this data is stored <strong>directly in your own Google Drive's hidden app folder</strong>. It is transferred straight between your device and your Google account.</li>
+  <li>The developer has <strong>no server</strong> and <strong>never</strong> receives, stores, accesses, or processes this data. No human reads it.</li>
+  <li>The data is used <strong>solely</strong> to provide the sync/backup feature you requested. It is <strong>never</strong> sold, shared with third parties, or used for advertising or any other purpose.</li>
+</ul>
+
+<h3>Removing your data and revoking access</h3>
+<ul>
+  <li>In the App you can sign out at any time, and remove individual synced books from Drive from the Cloud Sync screen.</li>
+  <li>You can revoke the App's access to your Google account at any time at <a href="https://myaccount.google.com/permissions" target="_blank">myaccount.google.com/permissions</a>. Removing the App from your Google account also deletes its hidden app-data folder and everything in it.</li>
+</ul>
+
+<p><strong>Limited Use disclosure.</strong> Shiori EPUB Reader's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>, including the <a href="https://developers.google.com/terms/api-services-user-data-policy#limited-use" target="_blank">Limited Use</a> requirements.</p>
+
+<hr />
+
+<h2>3. Permissions Used</h2>
 
 <table style="width:100%; border-collapse:collapse;">
   <tr style="background:#f5f5f5;">
@@ -52,7 +86,7 @@
   </tr>
   <tr>
     <td style="padding:8px; border:1px solid #ddd;"><code>INTERNET</code></td>
-    <td style="padding:8px; border:1px solid #ddd;">Required to load Google AdMob advertisements</td>
+    <td style="padding:8px; border:1px solid #ddd;">Required to load Google AdMob advertisements and, if you enable Cloud Sync, to communicate with Google Drive</td>
   </tr>
   <tr>
     <td style="padding:8px; border:1px solid #ddd;"><code>FOREGROUND_SERVICE</code><br/><code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code></td>
@@ -74,29 +108,30 @@
 
 <hr />
 
-<h2>3. Local Data Storage</h2>
-<p>The App stores the following data <strong>locally on your device only</strong>:</p>
+<h2>4. Local Data Storage</h2>
+<p>The App stores the following data <strong>locally on your device</strong> (and, only if you enable Cloud Sync, a copy in your own Google Drive as described in Section 2):</p>
 <ul>
   <li>Book library (file paths, titles, authors, cover images)</li>
   <li>Reading progress per book</li>
   <li>Text replacement rules you create</li>
   <li>App settings (font size, TTS speed, theme, etc.)</li>
+  <li>Bookmarks, highlights, and notes</li>
 </ul>
-<p>None of this data is transmitted to any external server.</p>
+<p>This data is never transmitted to any developer-operated server. It is sent only to your own Google Drive, and only if you enable the optional Cloud Sync feature.</p>
 
 <hr />
 
-<h2>4. Children's Privacy</h2>
+<h2>5. Children's Privacy</h2>
 <p>The App is not directed at children under the age of 13. We do not knowingly collect personal information from children. The advertisements displayed by AdMob are subject to <a href="https://support.google.com/admob/answer/9882605" target="_blank">Google's families policy</a>.</p>
 
 <hr />
 
-<h2>5. Changes to This Privacy Policy</h2>
+<h2>6. Changes to This Privacy Policy</h2>
 <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with an updated "Last updated" date. We encourage you to review this page periodically.</p>
 
 <hr />
 
-<h2>6. Contact</h2>
+<h2>7. Contact</h2>
 <p>If you have any questions about this Privacy Policy, please contact us at:<br/>
 <a href="mailto:endofday8888@gmail.com">endofday8888@gmail.com</a></p>
 
