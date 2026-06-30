@@ -28,7 +28,7 @@
   <li>The App does <strong>not</strong> require you to create an account to read books.</li>
   <li>The developer does <strong>not</strong> operate any server and does <strong>not</strong> receive, store, or have access to your books, reading data, or personal information.</li>
   <li>The App does <strong>not</strong> collect your name or any personally identifiable information for the developer's own use.</li>
-  <li>By default, EPUB files you open are read locally on your device and are never transmitted. They leave your device only if you choose to enable the optional Cloud Sync feature described below, in which case they are sent only to <em>your own</em> private Google Drive folder.</li>
+  <li>By default, EPUB files you open are read locally on your device and are never transmitted. They leave your device only if you choose to enable the optional Cloud Sync feature described below, in which case they are synced with <em>your own</em> Google Drive (specifically under the "Shiori Library" folder or the private application folder).</li>
 </ul>
 
 <h3>Information Collected by Third-Party Services</h3>
@@ -50,7 +50,7 @@
 <h3>Google account access we request</h3>
 <ul>
   <li><strong>Your email address</strong> (<code>email</code> scope) — shown in the app only so you can see which account is signed in. It is not stored or sent anywhere else.</li>
-  <li><strong>The app's private Drive folder</strong> (<code>https://www.googleapis.com/auth/drive.appdata</code> scope) — this is a hidden, application-specific folder ("appDataFolder") in your Google Drive. This scope grants access <strong>only</strong> to data the App itself creates in that hidden folder. The App <strong>cannot</strong> see, read, or modify any of your other Google Drive files, photos, or documents.</li>
+  <li><strong>Google Drive access</strong> (<code>https://www.googleapis.com/auth/drive</code> scope) — this allows the App to read, list, and write files in your Google Drive. We use this scope specifically to locate or create a folder named <strong>"Shiori Library"</strong> where you can upload your EPUB books, list the files inside it, and download them to your device. The App also backs up settings and reading progress (bookmarks and notes) to its private folder. No other files in your Google Drive are accessed or modified.</li>
 </ul>
 
 <h3>What is stored in your Drive (only when you enable Cloud Sync)</h3>
@@ -62,7 +62,7 @@
 
 <h3>How this data is handled</h3>
 <ul>
-  <li>All of this data is stored <strong>directly in your own Google Drive's hidden app folder</strong>. It is transferred straight between your device and your Google account.</li>
+  <li>All of this data is stored <strong>directly in your own Google Drive (under the "Shiori Library" folder and the hidden app folder)</strong>. It is transferred straight between your device and your Google account.</li>
   <li>The developer has <strong>no server</strong> and <strong>never</strong> receives, stores, accesses, or processes this data. No human reads it.</li>
   <li>The data is used <strong>solely</strong> to provide the sync/backup feature you requested. It is <strong>never</strong> sold, shared with third parties, or used for advertising or any other purpose.</li>
 </ul>
